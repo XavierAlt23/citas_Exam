@@ -1,0 +1,11 @@
+CASO: Reutilizar una sesión revocada
+$ .venv/bin/python scripts/demo_case.py sesion
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /logout/ -> 302  (1)
+  GET /panel/ -> 302  (2)
+
+RESULTADO: VERIFICADO
+El panel devuelve 302 hacia login; no se recupera el acceso.

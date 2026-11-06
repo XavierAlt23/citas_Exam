@@ -1,0 +1,65 @@
+{
+  "key": "sesion",
+  "title": "Reutilizar una sesión revocada",
+  "ref": "R04 · P04",
+  "vulnerability": "Volver a entrar con una cookie después de salir o tras su expiración.",
+  "defense": "Sesión de servidor revocable y fecha de caducidad.",
+  "action": "Reutiliza la cookie antigua y prueba otra sesión con fecha ya vencida.",
+  "expected": "El panel devuelve 302 hacia login; no se recupera el acceso.",
+  "limit": "Una cookie robada aún vigente conserva riesgo de uso.",
+  "tests": [
+    "app.tests.SecurityTests.test_P04_logout_revokes_old_cookie",
+    "app.tests.SecurityTests.test_P04_expired_session_rejected"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P04_logout_revokes_old_cookie",
+      "status": "passed",
+      "seconds": 0.414,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/logout/",
+          "status": 302,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P04_expired_session_rejected",
+      "status": "passed",
+      "seconds": 0.414,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Reutilizar una sesión revocada\n$ .venv/bin/python scripts/demo_case.py sesion\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  POST /logout/ -> 302  (1)\n  GET /panel/ -> 302  (2)\n\nRESULTADO: VERIFICADO\nEl panel devuelve 302 hacia login; no se recupera el acceso.\n"
+}

@@ -1,0 +1,13 @@
+CASO: Manipular monto o moneda
+$ .venv/bin/python scripts/demo_case.py monto
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+HTTP OBSERVADOS:
+  POST /integrations/psp/ -> 400  (1)
+ESTADOS FINALES OBSERVADOS:
+  Citas: {"pending": 1}
+  Pagos: {"pending": 1}
+
+RESULTADO: VERIFICADO
+HTTP 400. La cita no pasa a confirmada.

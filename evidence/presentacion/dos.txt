@@ -1,0 +1,13 @@
+CASO: Saturación de solicitudes (DoS)
+$ .venv/bin/python scripts/demo_case.py dos
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+HTTP OBSERVADOS:
+  GET /login/ -> 200  (300)
+  GET /login/ -> 429  (1)
+primeras_301: {"200": 300, "429": 1}
+Retry-After: 60
+
+RESULTADO: VERIFICADO
+La solicitud 301 recibe 429 y Retry-After: 60.

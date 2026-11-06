@@ -1,0 +1,11 @@
+CASO: Acceso a una cita ajena (BOLA)
+$ .venv/bin/python scripts/demo_case.py bola
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+HTTP OBSERVADOS:
+  GET /api/appointments/UUID/ -> 403  (4)
+  GET /api/appointments/UUID/ -> 200  (1)
+
+RESULTADO: VERIFICADO
+Paciente ajeno: HTTP 403. Propietario: HTTP 200.

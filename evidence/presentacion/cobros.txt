@@ -1,0 +1,17 @@
+CASO: Duplicar cobros o reembolsos
+$ .venv/bin/python scripts/demo_case.py cobros
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /integrations/psp/ -> 200  (2)
+ESTADOS FINALES OBSERVADOS:
+  Citas: {"confirmed": 1}
+  Pagos: {"paid": 1}
+  Reembolsos: 0
+  Citas: {"cancelled": 1}
+  Pagos: {"refunded": 1}
+  Reembolsos: 1
+
+RESULTADO: VERIFICADO
+Un pago procesado y un único reembolso por orden.

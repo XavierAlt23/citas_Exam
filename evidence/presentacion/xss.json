@@ -1,0 +1,61 @@
+{
+  "key": "xss",
+  "title": "Inyección de JavaScript (XSS)",
+  "ref": "P13 · Defensa en profundidad",
+  "vulnerability": "Introducir JavaScript para que se ejecute en el navegador.",
+  "defense": "Filtro de entrada, escape de HTML y política CSP de scripts.",
+  "action": "Envía un script al login y verifica el escape de contenido almacenado.",
+  "expected": "Login: HTTP 400. Contenido almacenado escapado y CSP presente.",
+  "manual": "Usuario: <script>alert('XSS')</script> · Continuar.",
+  "tests": [
+    "app.presentation_tests.EntryChecks.test_xss_login",
+    "app.tests.SecurityTests.test_P13_XSS_escaped_and_CSP_set"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P13_XSS_escaped_and_CSP_set",
+      "status": "passed",
+      "seconds": 0.435,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.presentation_tests.EntryChecks.test_xss_login",
+      "status": "passed",
+      "seconds": 0.022,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 400,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {
+        "mensaje": "Entrada bloqueada por el filtro de seguridad."
+      }
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Inyección de JavaScript (XSS)\n$ .venv/bin/python scripts/demo_case.py xss\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  GET /panel/ -> 200  (1)\n  POST /login/ -> 400  (1)\nmensaje: Entrada bloqueada por el filtro de seguridad.\n\nRESULTADO: VERIFICADO\nLogin: HTTP 400. Contenido almacenado escapado y CSP presente.\n"
+}

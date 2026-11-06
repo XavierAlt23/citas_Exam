@@ -1,0 +1,70 @@
+{
+  "key": "roles",
+  "title": "Escalar privilegios",
+  "ref": "R20 · Separación de funciones",
+  "vulnerability": "Recepción intenta usar funciones de operador o autoaprobar un rol.",
+  "defense": "Permiso por función, dos operadores distintos y revocación de sesiones.",
+  "action": "Intenta elevar permisos y aprobar el propio pedido; después usa otro operador.",
+  "expected": "Acción no autorizada: 403. El cambio válido exige al segundo operador.",
+  "tests": [
+    "app.tests.SecurityTests.test_R20_reception_cannot_change_roles",
+    "app.tests.SecurityTests.test_R20_two_operators_and_revocation_required"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_R20_reception_cannot_change_roles",
+      "status": "passed",
+      "seconds": 0.441,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/roles/",
+          "status": 403,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_R20_two_operators_and_revocation_required",
+      "status": "passed",
+      "seconds": 0.731,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/roles/",
+          "status": 302,
+          "count": 2
+        },
+        {
+          "method": "POST",
+          "path": "/roles/",
+          "status": 403,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Escalar privilegios\n$ .venv/bin/python scripts/demo_case.py roles\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  POST /roles/ -> 403  (2)\n  POST /roles/ -> 302  (2)\n  GET /panel/ -> 302  (1)\n\nRESULTADO: VERIFICADO\nAcción no autorizada: 403. El cambio válido exige al segundo operador.\n"
+}

@@ -1,0 +1,106 @@
+{
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "cases": [
+    {
+      "case": "bola",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "sql",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "xss",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "fuerza",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "dos",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "mfa",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "webhook",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "monto",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "replay",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "cobros",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "concurrencia",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "ambitos",
+      "passed": true,
+      "tests": 3
+    },
+    {
+      "case": "roles",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "menores",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "sesion",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "auditoria",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "secretos",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "privacidad",
+      "passed": true,
+      "tests": 2
+    },
+    {
+      "case": "retencion",
+      "passed": true,
+      "tests": 1
+    },
+    {
+      "case": "backup",
+      "passed": true,
+      "tests": 1
+    }
+  ],
+  "passed": true
+}

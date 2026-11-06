@@ -1,0 +1,30 @@
+{
+  "key": "retencion",
+  "title": "Conservar datos fuera de plazo",
+  "ref": "R19 · P14",
+  "vulnerability": "Mantener identificable una cuenta vencida o borrar datos con retención legal.",
+  "defense": "Disociación por plazo, legal hold y registro de supresiones.",
+  "action": "Vence dos cuentas ficticias; una tiene retención legal y la otra no.",
+  "expected": "La cuenta vencida se disocia; la cuenta bajo retención se conserva.",
+  "tests": [
+    "app.tests.SecurityTests.test_P14_retention_and_legal_hold"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P14_retention_and_legal_hold",
+      "status": "passed",
+      "seconds": 0.334,
+      "http": [],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Conservar datos fuera de plazo\n$ .venv/bin/python scripts/demo_case.py retencion\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\n\nRESULTADO: VERIFICADO\nLa cuenta vencida se disocia; la cuenta bajo retención se conserva.\n"
+}

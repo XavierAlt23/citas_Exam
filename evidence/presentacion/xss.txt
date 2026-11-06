@@ -1,0 +1,12 @@
+CASO: Inyección de JavaScript (XSS)
+$ .venv/bin/python scripts/demo_case.py xss
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  GET /panel/ -> 200  (1)
+  POST /login/ -> 400  (1)
+mensaje: Entrada bloqueada por el filtro de seguridad.
+
+RESULTADO: VERIFICADO
+Login: HTTP 400. Contenido almacenado escapado y CSP presente.

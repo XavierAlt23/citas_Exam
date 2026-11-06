@@ -1,0 +1,13 @@
+{
+  "slides": 21,
+  "cases": 20,
+  "screenshots": 20,
+  "all_cases_passed": true,
+  "every_slide_has_notes": true,
+  "layout_issues": [],
+  "captured_at": "2026-11-05T05:17:47.073158+00:00",
+  "pdf_pages": 21,
+  "pdf_current": true,
+  "images_embedded": 20,
+  "visual_review": "21 páginas renderizadas; revisión del conjunto y detalle SQL, DoS y recuperación"
+}

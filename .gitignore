@@ -6,4 +6,5 @@ __pycache__/
 staticfiles/
 evidence/*.json
 evidence/*.log
+evidence/**/*.log
 .impeccable/

@@ -1,0 +1,51 @@
+{
+  "key": "dos",
+  "title": "Saturación de solicitudes (DoS)",
+  "ref": "R14 · Cuota de aplicación",
+  "vulnerability": "Enviar demasiadas solicitudes para agotar recursos de la API.",
+  "defense": "Límite de 300 solicitudes por IP y minuto; respuesta 429.",
+  "action": "Hace 301 solicitudes aisladas: comprueba 300 respuestas 200 y una 429.",
+  "expected": "La solicitud 301 recibe 429 y Retry-After: 60.",
+  "manual": ".venv/bin/python scripts/load.py --users 30 --seconds 10",
+  "limit": "Prueba de cuota con cliente Django; no mide resistencia a un DDoS de red.",
+  "tests": [
+    "app.presentation_tests.EntryChecks.test_rate_limit_301_requests"
+  ],
+  "records": [
+    {
+      "test": "app.presentation_tests.EntryChecks.test_rate_limit_301_requests",
+      "status": "passed",
+      "seconds": 4.682,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/login/",
+          "status": 200,
+          "count": 300
+        },
+        {
+          "method": "GET",
+          "path": "/login/",
+          "status": 429,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {
+        "primeras_301": {
+          "200": 300,
+          "429": 1
+        },
+        "Retry-After": "60"
+      }
+    }
+  ],
+  "run_at": "2026-11-05T05:19:43.596582+00:00",
+  "passed": true,
+  "receipt": "CASO: Saturación de solicitudes (DoS)\n$ .venv/bin/python scripts/demo_case.py dos\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  GET /login/ -> 200  (300)\n  GET /login/ -> 429  (1)\nprimeras_301: {\"200\": 300, \"429\": 1}\nRetry-After: 60\n\nRESULTADO: VERIFICADO\nLa solicitud 301 recibe 429 y Retry-After: 60.\n"
+}

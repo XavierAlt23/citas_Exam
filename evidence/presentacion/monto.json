@@ -1,0 +1,41 @@
+{
+  "key": "monto",
+  "title": "Manipular monto o moneda",
+  "ref": "R16 · P06",
+  "vulnerability": "Cambiar el monto o la moneda de una orden para pagar menos.",
+  "defense": "Comparación contra la orden real, aunque el mensaje tenga firma válida.",
+  "action": "Envía un evento firmado con un centavo y moneda EUR sobre una orden USD.",
+  "expected": "HTTP 400. La cita no pasa a confirmada.",
+  "tests": [
+    "app.tests.SecurityTests.test_P06_wrong_amount_and_currency_rejected"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P06_wrong_amount_and_currency_rejected",
+      "status": "passed",
+      "seconds": 0.447,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/integrations/psp/",
+          "status": 400,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {
+          "pending": 1
+        },
+        "pagos": {
+          "pending": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Manipular monto o moneda\n$ .venv/bin/python scripts/demo_case.py monto\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  POST /integrations/psp/ -> 400  (1)\nESTADOS FINALES OBSERVADOS:\n  Citas: {\"pending\": 1}\n  Pagos: {\"pending\": 1}\n\nRESULTADO: VERIFICADO\nHTTP 400. La cita no pasa a confirmada.\n"
+}

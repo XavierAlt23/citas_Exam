@@ -1,0 +1,142 @@
+[
+  {
+    "case": "bola",
+    "capture": "01_bola.png",
+    "source": "evidence/presentacion/bola.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "sql",
+    "capture": "02_sql.png",
+    "source": "evidence/presentacion/sql.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "xss",
+    "capture": "03_xss.png",
+    "source": "evidence/presentacion/xss.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "fuerza",
+    "capture": "04_fuerza.png",
+    "source": "evidence/presentacion/fuerza.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "dos",
+    "capture": "05_dos.png",
+    "source": "evidence/presentacion/dos.txt",
+    "run_at": "2026-11-05T05:19:43.596582+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "mfa",
+    "capture": "06_mfa.png",
+    "source": "evidence/presentacion/mfa.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "webhook",
+    "capture": "07_webhook.png",
+    "source": "evidence/presentacion/webhook.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "monto",
+    "capture": "08_monto.png",
+    "source": "evidence/presentacion/monto.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "replay",
+    "capture": "09_replay.png",
+    "source": "evidence/presentacion/replay.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "cobros",
+    "capture": "10_cobros.png",
+    "source": "evidence/presentacion/cobros.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "concurrencia",
+    "capture": "11_concurrencia.png",
+    "source": "evidence/presentacion/concurrencia.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "ambitos",
+    "capture": "12_ambitos.png",
+    "source": "evidence/presentacion/ambitos.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "roles",
+    "capture": "13_roles.png",
+    "source": "evidence/presentacion/roles.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "menores",
+    "capture": "14_menores.png",
+    "source": "evidence/presentacion/menores.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "sesion",
+    "capture": "15_sesion.png",
+    "source": "evidence/presentacion/sesion.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "auditoria",
+    "capture": "16_auditoria.png",
+    "source": "evidence/presentacion/auditoria.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "secretos",
+    "capture": "17_secretos.png",
+    "source": "evidence/presentacion/secretos.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "privacidad",
+    "capture": "18_privacidad.png",
+    "source": "evidence/presentacion/privacidad.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "retencion",
+    "capture": "19_retencion.png",
+    "source": "evidence/presentacion/retencion.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  },
+  {
+    "case": "backup",
+    "capture": "20_backup.png",
+    "source": "evidence/presentacion/backup.txt",
+    "run_at": "2026-11-05T05:17:47.073158+00:00",
+    "kind": "Captura de salida real de prueba automatizada; no es una captura de la ventana del aplicativo."
+  }
+]

@@ -1,0 +1,13 @@
+CASO: Inyección SQL en el login
+$ .venv/bin/python scripts/demo_case.py sql
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /login/ -> 400  (1)
+  GET / -> 400  (1)
+  GET / -> 200  (1)
+mensaje: Entrada bloqueada por el filtro de seguridad.
+
+RESULTADO: VERIFICADO
+Payload bloqueado: 400. Entrada tratada como dato: sin resultados ajenos.

@@ -1,0 +1,11 @@
+CASO: Reservar el mismo cupo a la vez
+$ .venv/bin/python scripts/demo_case.py concurrencia
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+ESTADOS FINALES OBSERVADOS:
+  Citas: {"confirmed": 1}
+  Pagos: {"paid": 1}
+
+RESULTADO: VERIFICADO
+Una confirmación y 99 conflictos; un solo pago confirmado.

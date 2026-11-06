@@ -1,0 +1,44 @@
+{
+  "key": "fuerza",
+  "title": "Fuerza bruta de contraseñas",
+  "ref": "R13 · P09",
+  "vulnerability": "Probar contraseñas repetidamente hasta obtener acceso.",
+  "defense": "Cuotas por cuenta e IP, error genérico, MFA y auditoría.",
+  "action": "Hace seis intentos erróneos con un usuario ficticio en una base separada.",
+  "expected": "El sexto intento recibe HTTP 429 y el bloqueo queda auditado.",
+  "manual": "Login: usuario.inexistente.demo · Contraseña errónea · Seis envíos.",
+  "tests": [
+    "app.tests.SecurityTests.test_P09_bruteforce_limited_generic_errors"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P09_bruteforce_limited_generic_errors",
+      "status": "passed",
+      "seconds": 1.402,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 200,
+          "count": 5
+        },
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 429,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Fuerza bruta de contraseñas\n$ .venv/bin/python scripts/demo_case.py fuerza\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  POST /login/ -> 200  (5)\n  POST /login/ -> 429  (1)\n\nRESULTADO: VERIFICADO\nEl sexto intento recibe HTTP 429 y el bloqueo queda auditado.\n"
+}

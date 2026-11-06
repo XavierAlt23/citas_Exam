@@ -1,0 +1,56 @@
+{
+  "key": "menores",
+  "title": "Representación falsa de un menor",
+  "ref": "R03 · P03",
+  "vulnerability": "Reservar para un dependiente sin acreditar representación.",
+  "defense": "Solicitud con evidencia y revisión independiente antes de habilitar reservas.",
+  "action": "Prueba sin evidencia, sin revisión y después con vínculo validado.",
+  "expected": "Sin evidencia no se crea el vínculo; sin revisión no se reserva.",
+  "limit": "La revisión usa evidencia ficticia; no acredita parentesco legal real.",
+  "tests": [
+    "app.tests.SecurityTests.test_P03_no_evidence_cannot_request_representation",
+    "app.tests.SecurityTests.test_P03_unverified_dependent_rejected"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P03_no_evidence_cannot_request_representation",
+      "status": "passed",
+      "seconds": 0.361,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/dependents/new/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P03_unverified_dependent_rejected",
+      "status": "passed",
+      "seconds": 0.457,
+      "http": [],
+      "state": {
+        "citas": {
+          "pending": 1
+        },
+        "pagos": {
+          "pending": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 1
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Representación falsa de un menor\n$ .venv/bin/python scripts/demo_case.py menores\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  POST /dependents/new/ -> 200  (1)\n\nRESULTADO: VERIFICADO\nSin evidencia no se crea el vínculo; sin revisión no se reserva.\n"
+}

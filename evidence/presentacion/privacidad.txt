@@ -1,0 +1,8 @@
+CASO: Exponer datos sensibles de más
+$ .venv/bin/python scripts/demo_case.py privacidad
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+
+RESULTADO: VERIFICADO
+Sin campos clínicos/PAN/CVV y aviso sin diagnóstico ni póliza.

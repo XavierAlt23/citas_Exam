@@ -1,0 +1,14 @@
+CASO: Repetir un mensaje de integración
+$ .venv/bin/python scripts/demo_case.py replay
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /integrations/insurers/1/ -> 403  (1)
+  POST /integrations/insurers/1/ -> 200  (1)
+  POST /integrations/insurers/1/ -> 400  (1)
+  POST /integrations/psp/ -> 403  (1)
+  POST /integrations/psp/ -> 400  (1)
+
+RESULTADO: VERIFICADO
+Primer envío: 200. Repetido/vencido: 400. Scope incorrecto: 403.

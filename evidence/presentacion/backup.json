@@ -1,0 +1,43 @@
+{
+  "key": "backup",
+  "title": "Pérdida o corrupción de la base",
+  "ref": "R07 · P12",
+  "vulnerability": "Perder las citas y no poder recuperar una copia utilizable.",
+  "defense": "Copia cifrada, restauración en otra base y verificación de integridad.",
+  "action": "Crea una cita sintética, hace backup y restaura en una base NUEVA de Docker.",
+  "expected": "Checksum y auditoría válidos; cita y pago restaurados; sesiones revocadas.",
+  "limit": "Ensayo local; no simula pérdida del host ni demuestra alta disponibilidad.",
+  "tests": [
+    "app.presentation_tests.RecoveryCheck.test_encrypted_backup_and_restore"
+  ],
+  "records": [
+    {
+      "test": "app.presentation_tests.RecoveryCheck.test_encrypted_backup_and_restore",
+      "status": "passed",
+      "seconds": 5.036,
+      "http": [],
+      "state": {
+        "citas": {
+          "confirmed": 1
+        },
+        "pagos": {
+          "paid": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {
+        "checksum_verificado": true,
+        "auditoria_verificada": true,
+        "sesiones_revocadas": true,
+        "citas_restauradas": 1,
+        "pagos_restaurados": 1,
+        "tiempo_restauracion_s": 3.087,
+        "modo": "Docker · base nueva"
+      }
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Pérdida o corrupción de la base\n$ .venv/bin/python scripts/demo_case.py backup\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nchecksum_verificado: True\nauditoria_verificada: True\nsesiones_revocadas: True\ncitas_restauradas: 1\npagos_restaurados: 1\ntiempo_restauracion_s: 3.087\nmodo: Docker · base nueva\n\nRESULTADO: VERIFICADO\nChecksum y auditoría válidos; cita y pago restaurados; sesiones revocadas.\n"
+}

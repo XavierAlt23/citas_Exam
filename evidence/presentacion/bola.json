@@ -1,0 +1,48 @@
+{
+  "key": "bola",
+  "title": "Acceso a una cita ajena (BOLA)",
+  "ref": "R11 · P07",
+  "vulnerability": "Cambiar el identificador de una cita para consultar datos de otro paciente.",
+  "defense": "El servidor verifica propietario, rol y ámbito en cada recurso.",
+  "action": "Crea una cita de A y comprueba que B recibe 403, mientras A puede verla.",
+  "expected": "Paciente ajeno: HTTP 403. Propietario: HTTP 200.",
+  "manual": "Copiar la URL específica de A, entrar como paciente.b y pegarla.",
+  "tests": [
+    "app.tests.SecurityTests.test_P07_patient_and_wrong_center_denied"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P07_patient_and_wrong_center_denied",
+      "status": "passed",
+      "seconds": 0.564,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/api/appointments/UUID/",
+          "status": 403,
+          "count": 4
+        },
+        {
+          "method": "GET",
+          "path": "/api/appointments/UUID/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {
+          "pending": 1
+        },
+        "pagos": {
+          "pending": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T12:29:11.244716+00:00",
+  "passed": true,
+  "receipt": "CASO: Acceso a una cita ajena (BOLA)\n$ .venv/bin/python scripts/demo_case.py bola\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  GET /api/appointments/UUID/ -> 403  (4)\n  GET /api/appointments/UUID/ -> 200  (1)\n\nRESULTADO: VERIFICADO\nPaciente ajeno: HTTP 403. Propietario: HTTP 200.\n"
+}

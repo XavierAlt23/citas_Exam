@@ -1,0 +1,75 @@
+{
+  "key": "mfa",
+  "title": "Reutilizar un código MFA anterior",
+  "ref": "R04, R13 · P04, P09",
+  "vulnerability": "Intentar usar un código consumido o de otro inicio de sesión.",
+  "defense": "Desafío por sesión previa, un uso, caducidad y nuevo código en cada login.",
+  "action": "Entra, sale, crea otro acceso y compara el rechazo del código viejo con el nuevo.",
+  "expected": "El código anterior no abre el panel; el código nuevo sí.",
+  "manual": ".venv/bin/python manage.py demo_code paciente.a",
+  "limit": "La entrega por consola simula el canal del OTP de las cuentas sintéticas.",
+  "tests": [
+    "app.tests.SecurityTests.test_demo_each_login_has_new_code_and_previous_code_rejected"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_demo_each_login_has_new_code_and_previous_code_rejected",
+      "status": "passed",
+      "seconds": 1.55,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 302,
+          "count": 2
+        },
+        {
+          "method": "GET",
+          "path": "/mfa/",
+          "status": 200,
+          "count": 2
+        },
+        {
+          "method": "POST",
+          "path": "/mfa/",
+          "status": 302,
+          "count": 2
+        },
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 200,
+          "count": 2
+        },
+        {
+          "method": "POST",
+          "path": "/logout/",
+          "status": 302,
+          "count": 1
+        },
+        {
+          "method": "POST",
+          "path": "/mfa/",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/panel/",
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Reutilizar un código MFA anterior\n$ .venv/bin/python scripts/demo_case.py mfa\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  POST /login/ -> 302  (2)\n  GET /mfa/ -> 200  (2)\n  POST /mfa/ -> 302  (2)\n  GET /panel/ -> 200  (2)\n  POST /logout/ -> 302  (1)\n  POST /mfa/ -> 200  (1)\n  GET /panel/ -> 302  (1)\n\nRESULTADO: VERIFICADO\nEl código anterior no abre el panel; el código nuevo sí.\n"
+}

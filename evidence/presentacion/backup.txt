@@ -1,0 +1,15 @@
+CASO: Pérdida o corrupción de la base
+$ .venv/bin/python scripts/demo_case.py backup
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+checksum_verificado: True
+auditoria_verificada: True
+sesiones_revocadas: True
+citas_restauradas: 1
+pagos_restaurados: 1
+tiempo_restauracion_s: 3.087
+modo: Docker · base nueva
+
+RESULTADO: VERIFICADO
+Checksum y auditoría válidos; cita y pago restaurados; sesiones revocadas.

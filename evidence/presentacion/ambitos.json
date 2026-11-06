@@ -1,0 +1,107 @@
+{
+  "key": "ambitos",
+  "title": "Cruzar centros, médicos o seguros",
+  "ref": "R02, R17 · P02, P05, P07",
+  "vulnerability": "Un actor interno intenta consultar información fuera de su ámbito.",
+  "defense": "Filtros por organización, centro, profesional, póliza y beneficiario.",
+  "action": "Prueba una póliza de otro seguro y una cita de otro profesional.",
+  "expected": "Recurso ajeno: 403. Acceso propio permitido.",
+  "tests": [
+    "app.tests.SecurityTests.test_P02_insurer_cannot_read_foreign_policy",
+    "app.tests.SecurityTests.test_P07_wrong_professional_denied",
+    "app.tests.SecurityTests.test_P05_partner_tenant_and_beneficiary_checked"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P02_insurer_cannot_read_foreign_policy",
+      "status": "passed",
+      "seconds": 0.588,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/api/policies/UUID/",
+          "status": 403,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/api/policies/UUID/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P07_wrong_professional_denied",
+      "status": "passed",
+      "seconds": 0.66,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/api/appointments/UUID/",
+          "status": 403,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/api/appointments/UUID/",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/appointments/UUID/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {
+          "pending": 1
+        },
+        "pagos": {
+          "pending": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P05_partner_tenant_and_beneficiary_checked",
+      "status": "passed",
+      "seconds": 0.39,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/integrations/insurers/2/",
+          "status": 403,
+          "count": 1
+        },
+        {
+          "method": "POST",
+          "path": "/integrations/insurers/1/",
+          "status": 403,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Cruzar centros, médicos o seguros\n$ .venv/bin/python scripts/demo_case.py ambitos\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 3/3\n\nHTTP OBSERVADOS:\n  GET /api/policies/UUID/ -> 403  (1)\n  GET /api/policies/UUID/ -> 200  (1)\n  GET /api/appointments/UUID/ -> 403  (1)\n  GET /api/appointments/UUID/ -> 200  (1)\n  GET /appointments/UUID/ -> 200  (1)\n  POST /integrations/insurers/2/ -> 403  (1)\n  POST /integrations/insurers/1/ -> 403  (1)\n\nRESULTADO: VERIFICADO\nRecurso ajeno: 403. Acceso propio permitido.\n"
+}

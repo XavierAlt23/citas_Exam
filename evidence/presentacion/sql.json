@@ -1,0 +1,67 @@
+{
+  "key": "sql",
+  "title": "Inyección SQL en el login",
+  "ref": "R15 · P13",
+  "vulnerability": "Introducir instrucciones SQL en un dato del formulario.",
+  "defense": "Filtro de patrones, ORM parametrizado y usuario SQL sin permisos DDL.",
+  "action": "Envía la carga al login y prueba otra entrada que pasa el filtro sin alterar la consulta.",
+  "expected": "Payload bloqueado: 400. Entrada tratada como dato: sin resultados ajenos.",
+  "manual": "Usuario: ' OR 1=1-- · Contraseña ficticia · Continuar.",
+  "tests": [
+    "app.presentation_tests.EntryChecks.test_sql_login",
+    "app.tests.SecurityTests.test_P13_SQL_does_not_change_records"
+  ],
+  "records": [
+    {
+      "test": "app.presentation_tests.EntryChecks.test_sql_login",
+      "status": "passed",
+      "seconds": 0.065,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 400,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {
+        "mensaje": "Entrada bloqueada por el filtro de seguridad."
+      }
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P13_SQL_does_not_change_records",
+      "status": "passed",
+      "seconds": 0.42,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 400,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T12:31:54.505365+00:00",
+  "passed": true,
+  "receipt": "CASO: Inyección SQL en el login\n$ .venv/bin/python scripts/demo_case.py sql\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  POST /login/ -> 400  (1)\n  GET / -> 400  (1)\n  GET / -> 200  (1)\nmensaje: Entrada bloqueada por el filtro de seguridad.\n\nRESULTADO: VERIFICADO\nPayload bloqueado: 400. Entrada tratada como dato: sin resultados ajenos.\n"
+}

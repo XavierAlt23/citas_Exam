@@ -1,0 +1,8 @@
+CASO: Conservar datos fuera de plazo
+$ .venv/bin/python scripts/demo_case.py retencion
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+
+RESULTADO: VERIFICADO
+La cuenta vencida se disocia; la cuenta bajo retención se conserva.

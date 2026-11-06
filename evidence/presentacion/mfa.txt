@@ -1,0 +1,16 @@
+CASO: Reutilizar un código MFA anterior
+$ .venv/bin/python scripts/demo_case.py mfa
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+HTTP OBSERVADOS:
+  POST /login/ -> 302  (2)
+  GET /mfa/ -> 200  (2)
+  POST /mfa/ -> 302  (2)
+  GET /panel/ -> 200  (2)
+  POST /logout/ -> 302  (1)
+  POST /mfa/ -> 200  (1)
+  GET /panel/ -> 302  (1)
+
+RESULTADO: VERIFICADO
+El código anterior no abre el panel; el código nuevo sí.

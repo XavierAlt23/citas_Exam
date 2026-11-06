@@ -1,0 +1,10 @@
+CASO: Representación falsa de un menor
+$ .venv/bin/python scripts/demo_case.py menores
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /dependents/new/ -> 200  (1)
+
+RESULTADO: VERIFICADO
+Sin evidencia no se crea el vínculo; sin revisión no se reserva.

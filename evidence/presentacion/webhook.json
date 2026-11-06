@@ -1,0 +1,42 @@
+{
+  "key": "webhook",
+  "title": "Confirmación de pago falsificada",
+  "ref": "R16 · P06",
+  "vulnerability": "Marcar una orden como pagada con un webhook de firma falsa.",
+  "defense": "Validación HMAC del emisor antes de procesar el pago.",
+  "action": "Crea una orden pendiente y envía su confirmación con una firma inválida.",
+  "expected": "HTTP 400. El pago permanece pendiente.",
+  "manual": "POST /integrations/psp/ · X-Scope: payments:write · Sin firma válida.",
+  "tests": [
+    "app.tests.SecurityTests.test_P06_forged_webhook_no_state_change"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P06_forged_webhook_no_state_change",
+      "status": "passed",
+      "seconds": 0.441,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/integrations/psp/",
+          "status": 400,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {
+          "pending": 1
+        },
+        "pagos": {
+          "pending": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Confirmación de pago falsificada\n$ .venv/bin/python scripts/demo_case.py webhook\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nHTTP OBSERVADOS:\n  POST /integrations/psp/ -> 400  (1)\nESTADOS FINALES OBSERVADOS:\n  Citas: {\"pending\": 1}\n  Pagos: {\"pending\": 1}\n\nRESULTADO: VERIFICADO\nHTTP 400. El pago permanece pendiente.\n"
+}

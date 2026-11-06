@@ -1,0 +1,12 @@
+CASO: Escalar privilegios
+$ .venv/bin/python scripts/demo_case.py roles
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 2/2
+
+HTTP OBSERVADOS:
+  POST /roles/ -> 403  (2)
+  POST /roles/ -> 302  (2)
+  GET /panel/ -> 302  (1)
+
+RESULTADO: VERIFICADO
+Acción no autorizada: 403. El cambio válido exige al segundo operador.

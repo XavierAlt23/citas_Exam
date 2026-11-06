@@ -1,0 +1,11 @@
+CASO: Fuerza bruta de contraseñas
+$ .venv/bin/python scripts/demo_case.py fuerza
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+HTTP OBSERVADOS:
+  POST /login/ -> 200  (5)
+  POST /login/ -> 429  (1)
+
+RESULTADO: VERIFICADO
+El sexto intento recibe HTTP 429 y el bloqueo queda auditado.

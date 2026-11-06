@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "database": "PostgreSQL en Docker · test_consultas_presentacion",
+  "run_at": "2026-11-05T12:31:54.505365+00:00",
+  "records": [
+    {
+      "test": "app.presentation_tests.EntryChecks.test_sql_login",
+      "status": "passed",
+      "seconds": 0.065,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/login/",
+          "status": 400,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {
+        "mensaje": "Entrada bloqueada por el filtro de seguridad."
+      }
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P13_SQL_does_not_change_records",
+      "status": "passed",
+      "seconds": 0.42,
+      "http": [
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 400,
+          "count": 1
+        },
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "count": 1
+        }
+      ],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ]
+}

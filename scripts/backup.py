@@ -23,7 +23,7 @@ def main():
     def command(binary, database, *rest):
         if args.native: return ['/usr/lib/postgresql/16/bin/'+binary,'-h',db['HOST'],'-p',str(db['PORT']),'-U',user,'-d',database,*rest]
         return ['docker','compose','exec','-T','db',binary,'-U','postgres','-d',database,*rest]
-    evidence=ROOT/'evidence'; evidence.mkdir(exist_ok=True)
+    evidence=Path(os.environ.get('EVIDENCE_DIR',str(ROOT/'evidence'))); evidence.mkdir(exist_ok=True,parents=True)
     if args.action=='backup':
         started=time.perf_counter()
         raw=subprocess.run(command('pg_dump',db['NAME'],'-Fc','--no-owner','--no-acl'),env=env,check=True,capture_output=True).stdout

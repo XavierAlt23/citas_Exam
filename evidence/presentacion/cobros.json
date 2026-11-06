@@ -1,0 +1,59 @@
+{
+  "key": "cobros",
+  "title": "Duplicar cobros o reembolsos",
+  "ref": "S11 · P06, P08",
+  "vulnerability": "Repetir una operación para generar efectos financieros duplicados.",
+  "defense": "Idempotencia, referencias únicas y transacciones de estado.",
+  "action": "Repite un evento y una cancelación; verifica un solo cobro y reembolso.",
+  "expected": "Un pago procesado y un único reembolso por orden.",
+  "tests": [
+    "app.tests.SecurityTests.test_P06_duplicate_event_is_idempotent_with_new_delivery_nonce",
+    "app.tests.SecurityTests.test_P06_payment_then_cancel_refunds_once"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P06_duplicate_event_is_idempotent_with_new_delivery_nonce",
+      "status": "passed",
+      "seconds": 0.389,
+      "http": [
+        {
+          "method": "POST",
+          "path": "/integrations/psp/",
+          "status": 200,
+          "count": 2
+        }
+      ],
+      "state": {
+        "citas": {
+          "confirmed": 1
+        },
+        "pagos": {
+          "paid": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P06_payment_then_cancel_refunds_once",
+      "status": "passed",
+      "seconds": 0.579,
+      "http": [],
+      "state": {
+        "citas": {
+          "cancelled": 1
+        },
+        "pagos": {
+          "refunded": 1
+        },
+        "reembolsos": 1,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Duplicar cobros o reembolsos\n$ .venv/bin/python scripts/demo_case.py cobros\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\nHTTP OBSERVADOS:\n  POST /integrations/psp/ -> 200  (2)\nESTADOS FINALES OBSERVADOS:\n  Citas: {\"confirmed\": 1}\n  Pagos: {\"paid\": 1}\n  Reembolsos: 0\n  Citas: {\"cancelled\": 1}\n  Pagos: {\"refunded\": 1}\n  Reembolsos: 1\n\nRESULTADO: VERIFICADO\nUn pago procesado y un único reembolso por orden.\n"
+}

@@ -1,0 +1,48 @@
+{
+  "key": "privacidad",
+  "title": "Exponer datos sensibles de más",
+  "ref": "R01, R05, R08, R09 · P01, P10",
+  "vulnerability": "Guardar clínica o tarjetas, o revelar datos médicos en un aviso.",
+  "defense": "Minimización, póliza cifrada y plantilla neutral de notificación.",
+  "action": "Inspecciona el esquema, el cifrado de póliza y el texto de un aviso real.",
+  "expected": "Sin campos clínicos/PAN/CVV y aviso sin diagnóstico ni póliza.",
+  "tests": [
+    "app.tests.SecurityTests.test_P01_no_prohibited_data_schema",
+    "app.tests.SecurityTests.test_P10_notifications_neutral"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P01_no_prohibited_data_schema",
+      "status": "passed",
+      "seconds": 0.344,
+      "http": [],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    },
+    {
+      "test": "app.tests.SecurityTests.test_P10_notifications_neutral",
+      "status": "passed",
+      "seconds": 0.495,
+      "http": [],
+      "state": {
+        "citas": {
+          "confirmed": 1
+        },
+        "pagos": {
+          "paid": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Exponer datos sensibles de más\n$ .venv/bin/python scripts/demo_case.py privacidad\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 2/2\n\n\nRESULTADO: VERIFICADO\nSin campos clínicos/PAN/CVV y aviso sin diagnóstico ni póliza.\n"
+}

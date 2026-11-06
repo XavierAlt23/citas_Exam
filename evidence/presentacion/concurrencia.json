@@ -1,0 +1,35 @@
+{
+  "key": "concurrencia",
+  "title": "Reservar el mismo cupo a la vez",
+  "ref": "R12 · P08",
+  "vulnerability": "Crear dos citas sobre el mismo horario mediante una carrera.",
+  "defense": "Bloqueo de franja, transacción y restricción única parcial en PostgreSQL.",
+  "action": "Lanza 100 hilos con usuarios distintos sobre un mismo turno.",
+  "expected": "Una confirmación y 99 conflictos; un solo pago confirmado.",
+  "limit": "Concurrencia real de servicios y PostgreSQL; no son 100 clics manuales.",
+  "tests": [
+    "app.tests.ConcurrencyTests.test_P08_100_contenders_exactly_one_confirmation"
+  ],
+  "records": [
+    {
+      "test": "app.tests.ConcurrencyTests.test_P08_100_contenders_exactly_one_confirmation",
+      "status": "passed",
+      "seconds": 5.654,
+      "http": [],
+      "state": {
+        "citas": {
+          "confirmed": 1
+        },
+        "pagos": {
+          "paid": 1
+        },
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Reservar el mismo cupo a la vez\n$ .venv/bin/python scripts/demo_case.py concurrencia\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\nESTADOS FINALES OBSERVADOS:\n  Citas: {\"confirmed\": 1}\n  Pagos: {\"paid\": 1}\n\nRESULTADO: VERIFICADO\nUna confirmación y 99 conflictos; un solo pago confirmado.\n"
+}

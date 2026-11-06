@@ -1,0 +1,8 @@
+CASO: Alterar la auditoría
+$ .venv/bin/python scripts/demo_case.py auditoria
+Base separada: test_consultas_presentacion
+Pruebas aprobadas: 1/1
+
+
+RESULTADO: VERIFICADO
+Actores distintos, cadena íntegra y UPDATE rechazado.

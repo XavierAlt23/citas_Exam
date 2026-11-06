@@ -1,0 +1,31 @@
+{
+  "key": "auditoria",
+  "title": "Alterar la auditoría",
+  "ref": "R06 · P11",
+  "vulnerability": "Modificar acciones registradas o dejar cambios sin responsable.",
+  "defense": "Actores individuales, cadena HMAC y trigger append-only.",
+  "action": "Registra dos actores, verifica la cadena e intenta modificar un evento.",
+  "expected": "Actores distintos, cadena íntegra y UPDATE rechazado.",
+  "limit": "No demuestra resistencia a un administrador total del host y las claves.",
+  "tests": [
+    "app.tests.SecurityTests.test_P11_individual_audit_and_protected_updates"
+  ],
+  "records": [
+    {
+      "test": "app.tests.SecurityTests.test_P11_individual_audit_and_protected_updates",
+      "status": "passed",
+      "seconds": 0.396,
+      "http": [],
+      "state": {
+        "citas": {},
+        "pagos": {},
+        "reembolsos": 0,
+        "vinculos_verificados": 0
+      },
+      "details": {}
+    }
+  ],
+  "run_at": "2026-11-05T05:17:47.073158+00:00",
+  "passed": true,
+  "receipt": "CASO: Alterar la auditoría\n$ .venv/bin/python scripts/demo_case.py auditoria\nBase separada: test_consultas_presentacion\nPruebas aprobadas: 1/1\n\n\nRESULTADO: VERIFICADO\nActores distintos, cadena íntegra y UPDATE rechazado.\n"
+}
